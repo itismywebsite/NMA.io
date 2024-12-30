@@ -1,73 +1,105 @@
-
-
 <!DOCTYPE html>
-<html>
-  <head>
-     <title>
-New Modern Academy  
-    </title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            background-image: repeating-linear-gradient(45deg, #000, #000 10px, #00FF00 10px, #00FF00 20px), repeating-linear-gradient(-45deg, #000, #000 10px, #00FF00 10px, #00FF00 20px);
+            background-size: 20px 20px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #00FF00; /* Hacker green text color */
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid #00FF00;
+            background-color: #000;
+            color: #00FF00;
+        }
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00FF00;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00cc00;
+        }
+        .show-password {
+            margin-top: 10px;
+        }
+    </style>
 </head>
-  <body bgcolor ="white" >
-  
-    <FONT COLOR="BLUE" SIZE="100"><center>  <font color="red"> <sub>  <i id="f1">  You Are Welcome To </i></font>  </sub> NEW MODERN ACADEMY  <FONT COLOR="ORANGE"> <sup>'s WEB PAGE</sup> </FONT>   </center></FONT> 
- <hr>
-  
-  <marquee behaviour="LOOP" direction="right" bgcolor="skyblue" size="90" width="1332" height="79" onmouseover="stop();" onmouseout="start();" >
-  
-  
-  <font color="purple" size="20" > <i> New Modern Academy</i></font>-----------------<font color="RED" size="20" > <i> New Modern Academy</i></font>--------------------<font color="BLACK" size="20" > <i> New Modern Academy</i></font>--------------------<font color="WHITE" size="20" > <i> New Modern Academy</i></font>--------------------<font color="PURPLE" size="20" > <i> New Modern Academy</i></font>--------------------<font color="ORANGE" size="20" > <i> New Modern Academy</i></font>--------------------<font color="RED" size="20" > <i> New Modern Academy</i></font>
-  
-  </marquee>
-  <hr>
-  
-<font size="15"> <a href="#h3"> Direct jump to STUDENTS-DETAIL </a> </font>
+<body>
+    <div class="container">
+        <h1>Password Validator</h1>
+        <input type="password" id="password" placeholder="Enter your password">
+        <div class="show-password">
+            <input type="checkbox" id="showPassword"> Show Password
+        </div>
+        <button onclick="validatePassword()">Submit</button>
+        <div class="message" id="message"></div>
+    </div>
+    <script>
+        const passwordInput = document.getElementById('password');
+        const showPasswordCheckbox = document.getElementById('showPassword');
+        const message = document.getElementById('message');
 
-<CENTER>
- <p><fieldset>
- <h1> <FONT SIZE="55" COLOR="BLUE"><B> INTRODUCTION</B> </FONT></h1> 
-  <font size="30"> <i>New Modern Academy</i> is a boarding school which is one of the popular school of BURTIBANG-BAGLUNG in Nepal.This school is commonly popular for its well experienced teachers and good learning environment. It was established in <u>2065 </u>BS and which is now almost 16 years old. This school doesn't only give education but helps to creat goodmannared citizen for the country</font>
- </p></fieldset>
- 
- <P><fieldset>
- <h2> <b> <font color ="blue" size ="55">STRUCTURE-FEATURES</font> </b> </h2> 
-<FONT SIZE="30"> <i> New Modern Academy </i> has a fine building structure and the theme color is blue. This blue color represents peace environment of the school.It has 4 floors among which 1<sup>st</sup> three have clases from PG to 10 and the toppermost floor is hostel.In hostel paid students can stay  all time and they are grown in well-discipline environment.</FONT>
- </p></fieldset>
- 
- <p> <fieldset>
-  <h3 id="h3"><font size="50" color="blue"> STUDENTS-DETAIL </font></h3>       
- <font size ="30" > SHJSHSHDJSDJKASDJKASHDHSSJKJKASHDJKSA
-HKJHASJKHSJKHKJASHJKHSKJHSAJKHKJSDKJSJ
- NBDSABJHSDJSAKHDJKADKJHASDHASggv
- </font>
- </p></fieldset>
- 
-</CENTER>
- <br><BR><BR><BR><BR>
-<FONT SIZE="30"> click <a href="https://www.facebook.com/profile.php?id=100063495293859&mibextid=ZbWKwL" target="_blank" ><b>HERE</b></a>to view official <b>facebook</b> page of <i>New Modern Academy</i><br>
- </FONT>
- <br><BR>
- 
-<font size="15">
-<a href="#f1">Direct go to top </a>
- </font><br><br><br><br>
- 
- <b><FONT SIZE="30">
-<form>  
-<fieldset>
-<legend>
-Do you like this page 
- </legend>
- Type 'yes' if u liked and 'no' if u don't like : <input type = "text" > <br>
-</fieldset>
-</form>
- </FONT></b>
- <br>
- <br>
- <br>
- <br><br>
- 
- <a href="mailto:samimansari83289@gmail.com">Contact with me on e-mail</a>
- 
+        showPasswordCheckbox.addEventListener('change', function() {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
 
+        function validatePassword() {
+            const password = passwordInput.value;
+            let messageText = '';
+
+            if (password.length < 8) {
+                messageText += 'Password must be at least 8 characters long.<br>';
+            }
+            if (!/[0-9]/.test(password)) {
+                messageText += 'Password must contain at least one number.<br>';
+            }
+            if (!/[a-z]/.test(password)) {
+                messageText += 'Password must contain at least one lowercase letter.<br>';
+            }
+            if (!/[A-Z]/.test(password)) {
+                messageText += 'Password must contain at least one uppercase letter.<br>';
+            }
+            if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+                messageText += 'Password must contain at least one special character.<br>';
+            }
+
+            if (messageText === '') {
+                messageText = 'Password is strong!';
+            }
+
+            message.innerHTML = messageText;
+        }
+    </script>
 </body>
 </html>
